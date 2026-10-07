@@ -333,6 +333,19 @@
   .scr .lnk.warn { color:#E7A79E; }
   .tx .ba-cols { margin-top:12px; }
   .tx .ba-why { margin-top:12px; }
+  .stepcmp { margin-top:24px; max-width:var(--measure); border:1px solid var(--line); border-radius:14px;
+    background:var(--surface); padding:20px 22px; box-shadow:var(--shadow); display:grid; gap:14px; }
+  .sc-row { display:grid; grid-template-columns:64px 1fr auto; align-items:center; gap:14px; }
+  .sc-lbl { font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .sc-boxes { display:flex; flex-wrap:wrap; gap:5px; }
+  .sc-boxes i { width:22px; height:22px; border-radius:5px; display:block; }
+  .sc-boxes.b i { background:var(--del-bg); border:1px solid color-mix(in srgb, var(--del-sg) 55%, transparent); }
+  .sc-boxes.a i { background:var(--ins-bg); border:1px solid color-mix(in srgb, var(--ins-sg) 60%, transparent); }
+  .sc-n { font-family:var(--mono); font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  #welcome-back .halves { margin-top:24px; }
+  #welcome-back .loop-wrap { margin-top:18px; }
+  .stat-note { font-size:13px; color:var(--muted); }
+  @media (max-width:760px){ .sc-row { grid-template-columns:52px 1fr; } .sc-n { grid-column:2; } .sc-boxes i { width:17px; height:17px; } }
 </style>
 
 </head>
@@ -488,6 +501,94 @@
 
 
     </div>
+
+
+  <!-- CASE: WELCOME BACK (GROWTH) -->
+    <div class="zone-head"><span>Case study</span></div>
+  <section id="welcome-back" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">Case study · Growth</span>
+      <h2>Getting returning users back in<span class="sub">A web re-entry flow nobody owned. I found the drop-off, scoped the fix with engineering, got it onto the roadmap and shipped it as an A/B test.</span></h2>
+    </div>
+
+    <div class="callout">
+      <div class="h">My role</div>
+      <p>I spotted the problem and drove it to release: sized it with analytics, chose the solution with engineering, pitched it to the PO, and built the new flow with a designer.</p>
+    </div>
+
+    <h3 style="margin-top:40px">The problem</h3>
+    <p class="tight">People coming back to the web product had to get through 15 steps to reach an account they already had. The flow was long, its order didn’t match what people came back to do, and the copy at each step was vague. The designer and I flagged it, and analytics confirmed the drop-off. Everyone lost here had already chosen the product and simply couldn’t get back in.</p>
+
+    <div class="stepcmp">
+      <div class="sc-row">
+        <span class="sc-lbl">Before</span>
+        <span class="sc-boxes b"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="sc-n">15 steps</span>
+      </div>
+      <div class="sc-row">
+        <span class="sc-lbl">After</span>
+        <span class="sc-boxes a"><i></i><i></i><i></i></span>
+        <span class="sc-n">3 steps</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:46px">How it got shipped</h3>
+    <div class="loop-wrap">
+      <div class="loop">
+        <div class="step"><span class="dot">1</span><span class="lbl">Spot</span><span class="sub">flow review + data</span></div>
+        <div class="conn">→</div>
+        <div class="step"><span class="dot">2</span><span class="lbl">Research</span><span class="sub">re-entry patterns</span></div>
+        <div class="conn">→</div>
+        <div class="step"><span class="dot">3</span><span class="lbl">Trade-off</span><span class="sub">with engineering</span></div>
+        <div class="conn">→</div>
+        <div class="step"><span class="dot">4</span><span class="lbl">Pitch</span><span class="sub">PO · monthly planning</span></div>
+        <div class="conn">→</div>
+        <div class="step"><span class="dot">5</span><span class="lbl">A/B test</span><span class="sub">web</span></div>
+        <div class="conn">→</div>
+        <div class="step"><span class="dot">6</span><span class="lbl">Rollout</span><span class="sub">all users</span></div>
+      </div>
+    </div>
+
+    <div class="halves">
+      <div class="card">
+        <span class="tag">Chosen</span>
+        <h3>Magic link<span class="role2">one tap from the inbox</span></h3>
+        <ul>
+          <li>Fewest steps for the user: no password, no code to copy between apps.</li>
+          <li>Engineering rated it the easier of the two to build, so it fit into one planning cycle.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">Considered</span>
+        <h3>One-time code<span class="role2">code sent by email</span></h3>
+        <ul>
+          <li>Also removes the password, but the user still switches apps and types a code.</li>
+          <li>More work to implement, which would have pushed the test back.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="h">Hypothesis</div>
+      <p>If we simplify the welcome-back flow and cut the actions needed to log in, more users will successfully return to the product.</p>
+    </div>
+
+    <h3 style="margin-top:44px">Results</h3>
+    <p class="tight">The test won on every metric we tracked, and the effect carried all the way to the paid step. The new flow went out to all users.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">+31%</div><div class="d">conversion to registration / login</div></div>
+      <div class="stat"><div class="n">+28%</div><div class="d">conversion to reading</div></div>
+      <div class="stat"><div class="n">+14%</div><div class="d">conversion to paid reading</div></div>
+    </div>
+    <p class="tight stat-note">Relative lift vs. control, rounded. All three results statistically significant.</p>
+
+    <div class="callout">
+      <div class="h">What I’d check next</div>
+      <p>Some of the paid-reading lift came from returning users spending credits they had bought earlier, so not all of it is new revenue. The next numbers I’d track are new purchases among returning users and their D7 retention.</p>
+    </div>
+
+    <p class="kicker">Most of the work happened before any copy was written: finding the drop-off, sizing it, and getting engineering and the PO behind one option.</p>
+  </section>
 
 
   <!-- CASE: TRUST BY DESIGN -->
